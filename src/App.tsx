@@ -1,4 +1,4 @@
-export default function App() {
+const App = () => {
   return (
     <main className="flex min-h-screen items-center justify-center">
       <div className="rounded-2xl bg-white p-8 text-slate-800 shadow-xl">
@@ -10,3 +10,5 @@ export default function App() {
     </main>
   );
 }
+
+export default App;
