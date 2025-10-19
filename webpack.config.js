@@ -9,7 +9,7 @@ export default (env, argv) => {
   const isProd = argv.mode === 'production'; // флаг: режим сборки (dev/prod)
 
   return {
-    entry: './src/main.jsx', // точка входа (основной JS-файл)
+    entry: './src/main.tsx', // точка входа (основной JS-файл)
     output: {
       path: path.resolve(__dirname, 'dist'), // куда складывать сборку
       filename: isProd
@@ -19,7 +19,7 @@ export default (env, argv) => {
       clean: true, // очищать папку dist перед сборкой
     },
     resolve: {
-      extensions: ['.js', '.jsx'], // расширения, которые можно не писать при импорте
+      extensions: ['.js', '.jsx', '.ts', '.tsx'], // расширения, которые можно не писать при импорте
       alias: {                     // переопределяем react → preact
         react: 'preact/compat',
         'react-dom/test-utils': 'preact/test-utils',
@@ -36,7 +36,7 @@ export default (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.jsx?$/,          // обработка JS/JSX файлов
+          test: /\.[jt]sx?$/,          // обработка JS/TS/JSX/TSX файлов
           exclude: /node_modules/,
           use: { loader: 'babel-loader' }, // прогоняем через Babel
         },
